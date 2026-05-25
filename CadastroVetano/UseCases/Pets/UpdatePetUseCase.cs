@@ -18,9 +18,9 @@ namespace CadastroVetano.UseCases.Pets
         {
             Pet pet = _petRepository.FindById(petId);
 
-            pet.Name = dto.Name;
-            pet.Species = dto.Species;
-            pet.Race = dto.Race;
+            pet.ChangePet(dto.Species, dto.Race);
+
+            _petRepository.Update(pet);
         }
     }
 }

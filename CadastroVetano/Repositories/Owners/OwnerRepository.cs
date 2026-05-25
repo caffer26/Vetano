@@ -16,7 +16,7 @@ namespace CadastroVetano.Repositories.Owners
         }
 
         public void Create(Owner owner)
-        {
+        {            
             _database.Owners.Add(owner);
             _database.SaveChanges();
         }

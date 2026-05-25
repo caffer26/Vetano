@@ -4,8 +4,8 @@ namespace CadastroVetano.DTO.Pets
 {
     public class UpdatePetDTO
     {
-        public Name Name { get; set; }
-        public Species Species { get; set; }
-        public Race Race { get; set; }
+        public string Name { get; set; }
+        public string Species { get; set; }
+        public string Race { get; set; }
     }
 }

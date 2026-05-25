@@ -14,7 +14,7 @@ namespace CadastroVetano.Entities.Owners
             set => EmailValue = value.Value;
                     
         }
-        public PhoneNumber PhoneNumber { get; set; }
+        public PhoneNumber PhoneNumber { get; private set; }
         public DateTime BirthDate { get; set; }
         public List<Pet> Pets { get; set; } = new List<Pet>();
         
@@ -37,11 +37,11 @@ namespace CadastroVetano.Entities.Owners
             this.BirthDate = birthDate;
         }
 
-        public void UpdateOwner(Name name, Email email, PhoneNumber phoneNumber)
+        public void ChangeOwner(string name, string email, string phoneNumber)
         {
-            this.Name = name;
-            this.Email = email;
-            this.PhoneNumber = phoneNumber;
+            this.Name = new Name(name);
+            this.Email = new Email(email);
+            this.PhoneNumber = new PhoneNumber(phoneNumber);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Cadastro.Interfaces.IServices;
 using CadastroVetano.DTO.Pets;
 using CadastroVetano.Entities.Owners;
+using CadastroVetano.ValueObjects;
 
 namespace CadastroVetano.Services.Pets
 {
@@ -21,22 +22,16 @@ namespace CadastroVetano.Services.Pets
 
         public void CreatePet(CreatePetDTO dto)
         {
-            var pet = new Pet
-            {
-                Name = dto.Name ?? throw new Exception("Nome obrigatorio."),
-                Race = dto.Race ?? throw new Exception("Raca obrigatoria."),
-                Species = dto.Species ?? throw new Exception("Especie obrigatoria."),                
-                BirthDate = dto.BirthDate
-            };
+            var pet = new Pet(new Species(dto.Species), new Race(dto.Race), new Rg(dto.Rg), dto.BirthDate, dto.OwnerId);
             _petRepository.Create(pet);
         }
 
-        public void UpdatePet(Guid petId, Pet pet)
+        public void UpdatePet(Guid petId, UpdatePetDTO dto)
         {
-            Pet existing = _petRepository.FindById(petId);
-            existing.Name = pet.Name;
-            existing.Species = pet.Species;
-            _petRepository.Update(existing);
+            Pet pet = _petRepository.FindById(petId);
+            pet.ChangePet(dto.Species, dto.Race);
+            _petRepository.Update(pet);
+
         }
 
         public void DeletePet(Guid petId)

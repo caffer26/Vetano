@@ -7,7 +7,7 @@ namespace Cadastro.Interfaces.IServices
     {
         public Owner FindById(Guid id);
         public void CreateOwner(CreateOwnerDTO owner);
-        public void UpdateOwner(Guid Id, Owner owner);
+        public void UpdateOwner(Guid Id, UpdateOwnerDTO owner);
         public void DeleteOwner(Guid Id);
 
     }

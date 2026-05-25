@@ -1,6 +1,8 @@
 ﻿using Cadastro.Interfaces.IRepositories;
 using CadastroVetano.DTO.Pets;
 using CadastroVetano.Entities;
+using CadastroVetano.Entities.Owners;
+using CadastroVetano.ValueObjects;
 
 namespace CadastroVetano.UseCases.Pets
 {
@@ -15,13 +17,7 @@ namespace CadastroVetano.UseCases.Pets
 
         public void Run(CreatePetDTO dto)
         {
-            var pet = new Pet
-            {
-                Name = dto.Name ?? throw new Exception("Nome obrigatorio."),
-                Species = dto.Species ?? throw new Exception("Especie obrigatoria."),
-                Race = dto.Race ?? throw new Exception("Raça obrigatoria."),
-                BirthDate = dto.BirthDate
-            };
+            var pet = new Pet(new Species(dto.Species),new Race(dto.Race), new Rg(dto.Rg), dto.BirthDate, dto.OwnerId);
 
             _petRepository.Create(pet);
         }

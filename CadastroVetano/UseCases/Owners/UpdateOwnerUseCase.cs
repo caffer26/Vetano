@@ -19,9 +19,7 @@ namespace CadastroVetano.UseCases.Owners
         {
             Owner owner = _ownerRepository.FindById(ownerId);
 
-            owner.Name = dto.Name;
-            owner.Email = dto.Email;
-            owner.PhoneNumber = dto.PhoneNumber;
+            owner.ChangeOwner(dto.Name, dto.Email, dto.PhoneNumber);
 
             _ownerRepository.Update(owner);
         }

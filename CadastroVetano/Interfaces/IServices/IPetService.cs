@@ -7,7 +7,7 @@ namespace Cadastro.Interfaces.IServices
     {
         public Pet FindById(Guid Id);
         public void CreatePet(CreatePetDTO pet);
-        public void UpdatePet(Guid Id, Pet pet);
+        public void UpdatePet(Guid Id, UpdatePetDTO dto);
         public void DeletePet(Guid Id);
 
     }

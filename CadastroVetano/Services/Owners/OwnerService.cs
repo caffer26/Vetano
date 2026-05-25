@@ -3,6 +3,8 @@ using Cadastro.Interfaces.IServices;
 using CadastroVetano.DTO.Owners;
 using CadastroVetano.Entities.Owners;
 using CadastroVetano.UseCases.Owners;
+using CadastroVetano.ValueObjects;
+using Microsoft.AspNetCore.DataProtection.XmlEncryption;
 
 namespace CadastroVetano.Services.Owners
 {
@@ -23,22 +25,22 @@ namespace CadastroVetano.Services.Owners
         public void CreateOwner(CreateOwnerDTO dto)
         {
             var owner = new Owner
-            {
-                Name = dto.Name ?? throw new Exception("Nome obrigatorio."),
-                Email = dto.Email ?? throw new Exception("Email obrigatorio."),
-                PhoneNumber = dto.PhoneNumber ?? throw new Exception("Telefone obrigatorio."),
-                BirthDate = dto.BirthDate
-            };
+                (
+                    new Name(dto.Name), 
+                    new Cpf(dto.Cpf), 
+                    new PhoneNumber(dto.PhoneNumber), 
+                    dto.BirthDate, 
+                    new Email(dto.Email)
+                 );
+            
             _ownerRepository.Create(owner);
         }
 
-        public void UpdateOwner(Guid ownerId, Owner owner)
+        public void UpdateOwner(Guid ownerId, UpdateOwnerDTO dto)
         {
-            Owner existing = _ownerRepository.FindById(ownerId);
-            existing.Name = owner.Name;
-            existing.Email = owner.Email;
-            existing.PhoneNumber = owner.PhoneNumber;
-            _ownerRepository.Update(existing);
+            var owner = _ownerRepository.FindById(ownerId);
+            owner.ChangeOwner(dto.Name, dto.Email, dto.PhoneNumber);
+            _ownerRepository.Update(owner);
         }
 
         public void DeleteOwner(Guid ownerId) {
