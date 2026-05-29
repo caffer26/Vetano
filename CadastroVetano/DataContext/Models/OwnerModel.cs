@@ -11,5 +11,17 @@ namespace CadastroVetano.DataContext.Models
         public DateTime BirthDate { get; set; }
         public string Email { get; set; }
         public string Cpf { get; set; }
+
+
+        public OwnerModel(Guid Id, string Name, string Cpf, string PhoneNumber, DateTime BirthDate, string Email)
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.PhoneNumber = PhoneNumber;
+            this.BirthDate = BirthDate;
+            this.Email = Email;
+            this.Cpf = Cpf;
+        }
+
     }
 }

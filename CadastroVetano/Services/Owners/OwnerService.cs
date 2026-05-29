@@ -22,11 +22,16 @@ namespace CadastroVetano.Services.Owners
             return _ownerRepository.FindById(id);
         }
 
+        public Owner FindByCpf(string cpf)
+        {
+            return _ownerRepository.FindByCpf(cpf);
+        }
+
         public void CreateOwner(CreateOwnerDTO dto)
         {
             var owner = new Owner
                 (
-                    new Name(dto.Name), 
+                    new Name(dto.Name),
                     new Cpf(dto.Cpf), 
                     new PhoneNumber(dto.PhoneNumber), 
                     dto.BirthDate, 

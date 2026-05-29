@@ -17,6 +17,13 @@ namespace CadastroVetano.UseCases.Owners
 
         public void Run(CreateOwnerDTO dto)
         {
+            var existing = _ownerRepository.FindByCpf(dto.Cpf);
+
+            if (existing != null)
+            {
+                throw new Exception("CPF ja cadastrado.");
+            }
+
             var owner = new Owner(new Name(dto.Name), new Cpf(dto.Cpf), new PhoneNumber(dto.PhoneNumber), dto.BirthDate, new Email(dto.Email));
 
             _ownerRepository.Create(owner);

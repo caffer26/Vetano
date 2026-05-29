@@ -22,6 +22,15 @@ namespace CadastroVetano.Entities.Owners
             this.OwnerId = ownerId;
         }
 
+        public Pet(Guid Id, Species species, Race race, Rg rg, DateTime birthDate, Guid ownerId)
+        {
+            this.Id = Id;
+            this.Species = species;
+            this.Race = race;
+            this.Rg = rg;
+            this.BirthDate = birthDate;
+            this.OwnerId = ownerId;
+        }
 
         public void ChangePet(string species, string race)
         {

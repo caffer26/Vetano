@@ -17,13 +17,15 @@ namespace CadastroVetano.Repositories.Owners
 
         public void Create(Owner owner)
         {            
-            _database.Owners.Add(owner);
+            var om = OwnerToMap(owner);
+            _database.Owners.Add(om);
             _database.SaveChanges();
         }
 
         public void Update(Owner owner)
         {
-            _database.Owners.Update(owner);
+            var om = OwnerToMap(owner);
+            _database.Owners.Update(om);
             _database.SaveChanges();
         }
 
@@ -33,15 +35,27 @@ namespace CadastroVetano.Repositories.Owners
             return MapToOwner(om);
         }
 
+        public Owner FindByCpf(string cpf)
+        {
+            OwnerModel om = _database.Owners.FirstOrDefault(o => o.Cpf == cpf);
+            return MapToOwner(om);
+        }
+
         private Owner MapToOwner(OwnerModel om)
         {
             return new Owner(om.Id, new Name(om.Name), new Cpf(om.Cpf), new PhoneNumber(om.PhoneNumber), om.BirthDate, new Email(om.Email));
         }
 
+        private OwnerModel OwnerToMap(Owner om)
+        {
+            return new OwnerModel(om.Id,om.Name.Value,om.Cpf.Value,om.PhoneNumber.Value,om.BirthDate,om.Email.Value);
+        }
+
         public void Delete(Owner owner)
         {
+            var om = OwnerToMap(owner);
             owner.DeletedAt = DateTime.Now;
-            _database.Owners.Update(owner);
+            _database.Owners.Remove(om);
             _database.SaveChanges();
         }
     }

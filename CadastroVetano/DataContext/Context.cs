@@ -1,4 +1,5 @@
 ﻿using CadastroVetano.DataContext.Models;
+using CadastroVetano.Entities.Appointments;
 using CadastroVetano.Entities.Owners;
 using CadastroVetano.ValueObjects;
 using Microsoft.EntityFrameworkCore;
@@ -10,43 +11,43 @@ namespace CadastroVetano.DataContext
         public Context(DbContextOptions options) : base(options) { }
 
         public DbSet<OwnerModel> Owners { get; set; }
-        public DbSet<Pet> Pets { get; set; }
+        public DbSet<PetModel> Pets { get; set; }
+        public DbSet<AppointmentModel> Appointments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // OWNER
-            modelBuilder.Entity<Owner>()
-                .ToTable("Owners");
+            modelBuilder.Entity<OwnerModel>()
+                .OwnsOne(o => o.Name, n =>
+                {
+                    n.Property(p => p.Value).HasColumnName("Name");
+                })
+                .OwnsOne(o => o.Cpf, c =>
+                {
+                    c.Property(p => p.Value).HasColumnName("Cpf");
+                })
+                .OwnsOne(o => o.Email, e =>
+                {
+                    e.Property(p => p.Value).HasColumnName("Email");
+                })
+                .OwnsOne(o => o.PhoneNumber, p =>
+                {
+                    p.Property(p => p.Value).HasColumnName("PhoneNumber");
+                });
 
-            modelBuilder.Entity<Owner>()
-                .HasKey(o => o.Id);
+            modelBuilder.Entity<PetModel>()
+                .OwnsOne(p => p.Species, s =>
+                {
+                    s.Property(p => p.Value).HasColumnName("Species");
+                })
+                .OwnsOne(p => p.Race, b =>
+                {
+                    b.Property(p => p.Value).HasColumnName("Race");
+                });
 
-            modelBuilder.Entity<Owner>()
-                .Property(o => o.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
-            // PET
-            modelBuilder.Entity<Pet>()
-                .ToTable("Pets");
-
-            modelBuilder.Entity<Pet>()
-                .HasKey(p => p.Id);
-
-            modelBuilder.Entity<Pet>()
-                .Property(p => p.Name)
-                .IsRequired()
-                .HasMaxLength(100);
-
-            // RELACIONAMENTO
-            modelBuilder.Entity<Pet>()
-                .HasOne(p => p.Owner)
-                .WithMany(o => o.Pets)
-                .HasForeignKey(p => p.OwnerId);
-
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<AppointmentModel>(a =>
+            {
+                a.Property(x => x.Date).HasColumnName("AppointmentDate");
+            });
         }
-
-
     }
 }
