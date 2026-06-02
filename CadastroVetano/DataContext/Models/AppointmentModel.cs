@@ -5,7 +5,7 @@
         public Guid Id { get;  set; }
         public DateTime Date { get;  set; }
         public Guid PetId { get;  set; }
-
+        public PetModel Pet { get; set; }
 
         public AppointmentModel(Guid id, DateTime date, Guid petId)
         {

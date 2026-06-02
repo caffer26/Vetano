@@ -22,7 +22,7 @@ namespace CadastroVetano.Services.Pets
 
         public void CreatePet(CreatePetDTO dto)
         {
-            var pet = new Pet(new Species(dto.Species), new Race(dto.Race), new Rg(dto.Rg), dto.BirthDate, dto.OwnerId);
+            var pet = new Pet(new Species(dto.Species), new Name(dto.Name), new Race(dto.Race), new Rg(dto.Rg), dto.BirthDate, dto.OwnerId);
             _petRepository.Create(pet);
         }
 

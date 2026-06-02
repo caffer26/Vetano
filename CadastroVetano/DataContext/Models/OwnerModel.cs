@@ -6,11 +6,11 @@ namespace CadastroVetano.DataContext.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string EmailValue { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; set; }
         public string Email { get; set; }
         public string Cpf { get; set; }
+        public List<PetModel> Pets { get; set; }
 
 
         public OwnerModel(Guid Id, string Name, string Cpf, string PhoneNumber, DateTime BirthDate, string Email)

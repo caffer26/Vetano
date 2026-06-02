@@ -3,7 +3,6 @@
 {
     public class Appointment : EntityBase
     {
-        public Guid Id {  get; private set; }
         public DateTime Date { get; private set; }
         public Guid PetId { get; private set; }
 

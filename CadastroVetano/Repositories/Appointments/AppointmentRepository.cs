@@ -51,5 +51,17 @@ namespace CadastroVetano.Repositories.Appointments
             AppointmentModel apm = _database.Appointments.FirstOrDefault(a => a.Id == Id);
             return MapToAppointment(apm);
         } 
+
+        public Appointment FindPetById(Guid petId)
+        {
+            AppointmentModel apm = _database.Appointments.FirstOrDefault(a => a.PetId == petId);
+            return MapToAppointment(apm);
+        }
+
+        public Appointment FindByDate(DateTime date) 
+        {
+            AppointmentModel apm = _database.Appointments.FirstOrDefault(a => a.Date == date);
+            return MapToAppointment(apm);
+        }
     }
 }

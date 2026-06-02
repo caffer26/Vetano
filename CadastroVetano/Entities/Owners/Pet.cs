@@ -4,7 +4,6 @@ namespace CadastroVetano.Entities.Owners
 {
     public class Pet : EntityBase
     {
-        public Guid Id { get; private set; }
         public Species Species {  get; private set; }
         public Race Race { get; private set; }
         public Name Name { get; private set; }
@@ -13,9 +12,10 @@ namespace CadastroVetano.Entities.Owners
         public Owner Owner { get; private set; }
         public Guid OwnerId { get; private set; }
 
-        public Pet(Species species, Race race, Rg rg, DateTime birthDate, Guid ownerId) 
+        public Pet(Species species, Name name, Race race, Rg rg, DateTime birthDate, Guid ownerId) 
         { 
             this.Species = species;
+            this.Name = name;
             this.Race = race;
             this.Rg = rg;
             this.BirthDate = birthDate;

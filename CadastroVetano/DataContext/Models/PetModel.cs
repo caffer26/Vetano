@@ -12,7 +12,8 @@ namespace CadastroVetano.DataContext.Models
         public string Rg { get;  set; }
         public DateTime BirthDate { get;  set; }
         public Guid OwnerId { get;  set; }
-        public Owner Owner { get; set; }
+        public OwnerModel Owner { get; set; }
+        public List<AppointmentModel> Appointments { get; set; }
 
         public PetModel(Guid Id, string species, string race, string name, string rg, DateTime birthDate, Guid ownerId)
         {

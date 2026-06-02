@@ -6,7 +6,7 @@
 
         public Cpf(string value)
         {
-            if(string.IsNullOrEmpty(value) || value.Length == 11)
+            if(string.IsNullOrEmpty(value) || value.Length != 11)
             {
                 throw new Exception("Cpf invalido.");
             }

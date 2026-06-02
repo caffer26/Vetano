@@ -27,6 +27,11 @@ namespace CadastroVetano.Services.Owners
             return _ownerRepository.FindByCpf(cpf);
         }
 
+        public List<Owner> FindAll()
+        {
+            return _ownerRepository.FindAll();
+        }
+
         public void CreateOwner(CreateOwnerDTO dto)
         {
             var owner = new Owner
