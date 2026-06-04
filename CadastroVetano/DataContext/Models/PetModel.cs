@@ -1,5 +1,5 @@
-﻿using CadastroVetano.Entities.Owners;
-using CadastroVetano.ValueObjects;
+﻿using CadastroVetano.Register.Entities.Owners;
+using CadastroVetano.Register.ValueObjects;
 
 namespace CadastroVetano.DataContext.Models
 {

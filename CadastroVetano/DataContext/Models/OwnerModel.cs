@@ -1,4 +1,4 @@
-﻿using CadastroVetano.ValueObjects;
+﻿using CadastroVetano.Register.ValueObjects;
 
 namespace CadastroVetano.DataContext.Models
 {

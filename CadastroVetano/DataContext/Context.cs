@@ -1,7 +1,7 @@
 ﻿using CadastroVetano.DataContext.Models;
-using CadastroVetano.Entities.Appointments;
-using CadastroVetano.Entities.Owners;
-using CadastroVetano.ValueObjects;
+using CadastroVetano.Appointments.Entities.Appointments;
+using CadastroVetano.Register.Entities.Owners;
+using CadastroVetano.Register.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
