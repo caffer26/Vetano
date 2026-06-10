@@ -5,6 +5,7 @@ namespace CadastroVetano.Register.Interfaces.IRepositories
     public interface IPetRepository
     {
         public Pet? FindById(Guid Id);
+        public List<Pet> FindAll();
         public Pet? FindByRg(string Rg);
         public void Create(Pet pet);
         public void Update(Pet pet);

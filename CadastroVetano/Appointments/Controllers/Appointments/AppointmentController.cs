@@ -37,6 +37,28 @@ namespace CadastroVetano.Appointments.Controllers.Appointments
             }
         }
 
+        [HttpGet]
+        public IActionResult FindAll()
+        {
+            try
+            {
+                var appointments = _appointmentService.FindAll();
+
+                var response = appointments.Select(appointment => new AppointmentResponseDTO
+                {
+                    Id = appointment.Id,
+                    Date = appointment.Date,
+                    PetId = appointment.PetId
+                }).ToList();
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
         [HttpGet("{id}")]
         public IActionResult FindById(Guid id)
         {
@@ -59,7 +81,7 @@ namespace CadastroVetano.Appointments.Controllers.Appointments
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public IActionResult Update(Guid id, [FromBody] UpdateAppointmentDTO dto)
         {
             try

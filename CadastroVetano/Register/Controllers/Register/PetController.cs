@@ -62,7 +62,33 @@ namespace CadastroVetano.Register.Controllers.Register
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpGet]
+        public IActionResult FindAll()
+        {
+            try
+            {
+                var pets = _petService.FindAll();
+
+                var response = pets.Select(pet => new PetResponseDTO
+                {
+                    Id = pet.Id,
+                    Species = pet.Species.Value,
+                    Race = pet.Race.Value,
+                    Name = pet.Name.Value,
+                    Rg = pet.Rg.Value,
+                    BirthDate = pet.BirthDate,
+                    OwnerId = pet.OwnerId
+                }).ToList();
+
+                return Ok(response);
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        [HttpPatch("{id}")]
         public IActionResult Update(Guid id, [FromBody] UpdatePetDTO dto)
         {
             try

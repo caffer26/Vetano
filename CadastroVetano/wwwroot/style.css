@@ -1,0 +1,75 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial,sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+aside {
+    width: 220px;
+    background: #222;
+    color: white;
+    padding: 20px;
+}
+
+    aside h2 {
+        margin-bottom: 20px;
+    }
+
+    aside button {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
+        border: none;
+        cursor: pointer;
+    }
+
+main {
+    flex: 1;
+    padding: 30px;
+}
+
+form {
+    display: grid;
+    gap: 10px;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+pre {
+    background: white;
+    padding: 15px;
+    margin-top: 15px;
+}

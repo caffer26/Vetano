@@ -89,7 +89,7 @@ namespace CadastroVetano.Register.Controllers.Register
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public IActionResult Update(Guid id, [FromBody] UpdateOwnerDTO dto)
         {
             try

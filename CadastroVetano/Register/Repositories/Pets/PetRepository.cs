@@ -22,6 +22,11 @@ namespace CadastroVetano.Register.Repositories.Pets
             return MapToPet(pm);
         }
 
+        public List<Pet> FindAll()
+        {
+            var pm = _database.Pets.ToList();
+            return pm.Select(pm => MapToPet(pm)).ToList();
+        }
         public Pet FindByRg(string rg)
         {
             PetModel pm = _database.Pets.FirstOrDefault(p => p.Rg == rg);

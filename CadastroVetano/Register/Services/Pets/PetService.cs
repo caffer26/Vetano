@@ -19,6 +19,10 @@ namespace CadastroVetano.Register.Services.Pets
         {
             return _petRepository.FindById(id);
         }
+        public List<Pet> FindAll()
+        {
+            return _petRepository.FindAll();
+        }
 
         public void CreatePet(CreatePetDTO dto)
         {

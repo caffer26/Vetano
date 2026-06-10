@@ -6,6 +6,7 @@ namespace CadastroVetano.Appointments.Interfaces.IServices
     public interface IAppointmentService
     {
         public Appointment FindById(Guid id);
+        public List<Appointment> FindAll();
         public void CreateAppointment(CreateAppointmentDTO appointment);
         public void UpdateAppointment(Guid appointmentId, UpdateAppointmentDTO appointment);
         public void DeleteAppointment(Guid Id);

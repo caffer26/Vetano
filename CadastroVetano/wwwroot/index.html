@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro Vetano</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <aside>
+            <h2>Vetano</h2>
+
+            <button onclick="mostrar('owners')">Donos</button>
+            <button onclick="mostrar('pets')">Pets</button>
+            <button onclick="mostrar('appointments')">Agendamentos</button>
+        </aside>
+
+        <main>
+
+            <!-- OWNER -->
+            <section id="owners">
+                <h1>Donos</h1>
+
+                <form id="ownerForm">
+                    <input type="text" id="name" placeholder="Nome">
+                    <input type="email" id="email" placeholder="Email">
+                    <input type="text" id="cpf" placeholder="CPF">
+                    <input type="text" id="phoneNumber" placeholder="Telefone">
+                    <input type="date" id="birthDate">
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>CPF</th>
+                            <th>Telefone</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="ownerTable"></tbody>
+                </table>
+            </section>
+
+            <!-- PET -->
+            <section id="pets" class="hidden">
+                <h1>Buscar Pet</h1>
+
+                <input type="text" id="petId" placeholder="ID do Pet">
+                <button onclick="buscarPet()">Buscar</button>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Especie</th>
+                            <th>Raca</th>
+                            <th>RG</th>
+                            <th>ID Dono</th>
+                        </tr>
+                    </thead>
+                    <tbody id="petTable"></tbody>
+                </table>
+
+                <pre id="petResult"></pre>
+            </section>
+
+            <!-- APPOINTMENT -->
+
+            <section id="appointments" class="hidden">
+                <h1>Buscar Agendamento</h1>
+
+                <input type="text" id="appointmentId" placeholder="ID do Agendamento">
+                <button onclick="buscarAppointment()">Buscar</button>
+
+                <pre id="appointmentResult"></pre>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

@@ -29,6 +29,17 @@ builder.Services.AddDbContext<Context>(options =>
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
     ));
 
+//Frontend
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 //Repositorios
 builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
@@ -67,6 +78,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseDefaultFiles();
+
+app.UseStaticFiles();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 

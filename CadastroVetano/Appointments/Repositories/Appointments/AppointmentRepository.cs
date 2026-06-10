@@ -48,6 +48,11 @@ namespace CadastroVetano.Appointments.Repositories.Appointments
             return new AppointmentModel(ap.Id, ap.Date, ap.PetId);
         }
 
+        public List<Appointment> FindAll()
+        {
+            var apm = _database.Appointments.ToList();
+            return apm.Select(apm => MapToAppointment(apm)).ToList();
+        }
         public Appointment FindById(Guid Id)
         {
             AppointmentModel apm = _database.Appointments.FirstOrDefault(a => a.Id == Id);

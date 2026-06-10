@@ -14,6 +14,10 @@ namespace CadastroVetano.Appointments.Services.Appointments
             _appointmentRepository = appointmentRepository;
         }
 
+        public List<Appointment> FindAll()
+        {
+            return _appointmentRepository.FindAll();
+        }
         public Appointment FindById(Guid id)
         {
             return _appointmentRepository.FindById(id);
