@@ -33,7 +33,7 @@ namespace CadastroVetano.Register.Services.Pets
         public void UpdatePet(Guid petId, UpdatePetDTO dto)
         {
             Pet pet = _petRepository.FindById(petId);
-            pet.ChangePet(dto.Species, dto.Race);
+            pet.ChangePet(dto.Name, dto.Species, dto.Race);
             _petRepository.Update(pet);
 
         }

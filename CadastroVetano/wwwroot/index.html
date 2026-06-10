@@ -48,10 +48,23 @@
 
             <!-- PET -->
             <section id="pets" class="hidden">
-                <h1>Buscar Pet</h1>
+                <h1>Pets</h1>
 
-                <input type="text" id="petId" placeholder="ID do Pet">
-                <button onclick="buscarPet()">Buscar</button>
+                <form id="petForm">
+                    <input type="text" id="petName" placeholder="Nome">
+                    <input type="text" id="species" placeholder="Espécie">
+                    <input type="text" id="race" placeholder="Raça">
+                    <input type="text" id="rg" placeholder="RG">
+                    <input type="date" id="petBirthDate">
+                    <input type="text" id="petOwnerId" placeholder="ID Dono">
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+
+                <div style="margin-top:12px">
+                    <input type="text" id="petId" placeholder="ID do Pet">
+                    <button onclick="buscarPet()">Buscar</button>
+                </div>
 
                 <table>
                     <thead>
@@ -61,6 +74,7 @@
                             <th>Raca</th>
                             <th>RG</th>
                             <th>ID Dono</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="petTable"></tbody>
@@ -72,10 +86,29 @@
             <!-- APPOINTMENT -->
 
             <section id="appointments" class="hidden">
-                <h1>Buscar Agendamento</h1>
+                <h1>Agendamentos</h1>
 
-                <input type="text" id="appointmentId" placeholder="ID do Agendamento">
-                <button onclick="buscarAppointment()">Buscar</button>
+                <form id="appointmentForm">
+                    <input type="date" id="appointmentDate">
+                    <input type="text" id="appointmentPetId" placeholder="ID do Pet">
+                    <button type="submit">Agendar</button>
+                </form>
+
+                <div style="margin-top:12px">
+                    <input type="text" id="appointmentId" placeholder="ID do Agendamento">
+                    <button onclick="buscarAppointment()">Buscar</button>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>ID Pet</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentTable"></tbody>
+                </table>
 
                 <pre id="appointmentResult"></pre>
             </section>

@@ -27,7 +27,7 @@ namespace CadastroVetano.Register.Repositories.Owners
         {
             var om = _database.Owners.FirstOrDefault(o => o.Id == owner.Id); ;
             om.Name = owner.Name.Value;
-            om.Cpf = owner.Cpf.Value;
+            om.Email = owner.Email.Value;
             om.PhoneNumber = owner.PhoneNumber.Value;
             _database.SaveChanges();
         }

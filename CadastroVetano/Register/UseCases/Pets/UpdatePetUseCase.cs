@@ -22,7 +22,7 @@ namespace CadastroVetano.Register.UseCases.Pets
                 throw new Exception("Pet nao encontrado");            
             }
 
-            pet.ChangePet(dto.Species, dto.Race);
+            pet.ChangePet(dto.Name, dto.Species, dto.Race);
 
             _petRepository.Update(pet);
         }

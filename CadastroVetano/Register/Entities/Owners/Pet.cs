@@ -35,8 +35,9 @@ namespace CadastroVetano.Register.Entities.Owners
             this.OwnerId = ownerId;
         }
 
-        public void ChangePet(string species, string race)
+        public void ChangePet(string name, string species, string race)
         {
+            this.Name = new Name(name);
             this.Species = new Species(species);
             this.Race = new Race(race);
         }
